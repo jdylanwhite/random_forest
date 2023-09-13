@@ -1,9 +1,9 @@
 // Load libraries
-#include <iostream>
-#include <fstream>
+#include <iostream>   // cout
+#include <fstream>    // ofstream
 
-// Define a function to return the Gaussian pulse
-double random_step() {
+// Define a function to return the step direction
+int random_step() {
 
     // Generate a random number between 0 and 1
     int random = rand() % 2;
