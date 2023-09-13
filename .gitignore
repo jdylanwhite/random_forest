@@ -1,4 +1,13 @@
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+# Other things to ignore
 .vscode
-random_walk_1D
 *.png
 *.csv
