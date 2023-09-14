@@ -53,17 +53,80 @@ int main() {
             data_file << n << "," << i << "," << x[i] << "," << y[i] << std::endl;
 
             // Determine which direction to step
-            // TODO: Change so we don't take a step if someone is in that spot
             int stepIndex = n*i + i;
             int stepChoice = step[stepIndex];
-            if (stepChoice == 1) {
-                x[i] = x[i] + 1;
-            } else if (stepChoice == 2){
-                y[i] = y[i] + 1;
-            } else if (stepChoice == 3) {
-                x[i] = x[i] - 1;
-            } else {
-                y[i] = y[i] - 1;
+
+            // Check if we can make the step that we want to make
+            // TODO: Add additional checks for boundary conditions
+            bool canStepRight = true;
+            bool canStepUp = true;
+            bool canStepLeft = true;
+            bool canStepDown = true;
+            for (int ii=0; ii<nw; ii++) {
+                
+                // Check if we can step right
+                if ((x[ii] == x[i]+1) && (y[ii] == y[i])) {
+
+                    canStepRight = false;
+
+                // Check if we can step right over the periodic boundary
+                } else if ((x[i]+1 == nx) && (x[ii] == 0) && (y[ii] == y[i])) {
+
+                    canStepRight = false;
+
+                // Check if we can step up
+                } else if ((x[ii] == x[i]) && (y[ii] == y[i]+1)) {
+                    
+                    canStepUp = false;
+
+                // Check if we can step up over the periodic boundary
+                } else if ((y[i]+1 == ny) && (x[ii] == x[i]) && (y[ii] == 0)) {
+                    
+                    canStepUp = false;
+
+                // Check if we can step left
+                } else if ((x[ii] == x[i]-1) && (y[ii] == y[i])) {
+                    
+                    canStepLeft = false;
+
+                // Check if we can step left over the periodic boundary
+                } else if ((x[i]-1 == -1) && (x[ii] == nx-1) && (y[ii] == y[i])) {
+
+                    canStepLeft = false;
+
+                // Check if we can step down
+                } if ((x[ii] == x[i]) && (y[ii] == y[i]-1)) {
+                    
+                    canStepDown = false;
+
+                // Check if we can step down over the periodic boundary
+                } else if ((y[i]-1 == -1) && (x[ii] == x[i]) && (y[ii] == ny-1)) {
+                    
+                    canStepDown = false;
+
+                }
+            }
+
+            // Step right
+            if ((stepChoice == 1) && (canStepRight)) {
+                
+                    x[i] = x[i] + 1;
+
+            // Step up
+            } else if ((stepChoice == 2) && (canStepUp)) {
+
+                    y[i] = y[i] + 1;
+
+            // Step left
+            } else if ((stepChoice == 3) && (canStepLeft)) {
+
+                    x[i] = x[i] - 1;
+
+            // Step down
+            } else if ((stepChoice == 4) && (canStepLeft)) {
+
+                    y[i] = y[i] - 1;
+
             }
 
             // Enforce periodic boundaries
