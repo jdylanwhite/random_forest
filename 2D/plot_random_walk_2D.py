@@ -29,11 +29,11 @@ for n in range(nt):
     ax.set_ylabel('y')
 
     # Set axis limits
-    ax.set_xlim(-1, 100)
-    ax.set_ylim(-1, 100)
+    ax.set_xlim(-1, 300)
+    ax.set_ylim(-1, 300)
     
     # Pause the plot for a moment
-    plt.pause(0.1)
+    plt.pause(0.01)
 
     # Clear the plot to update the results
     if n != nt:
