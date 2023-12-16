@@ -5,7 +5,7 @@
 #include <algorithm>  // generate
 #include <vector>     // vector
 #include <iterator>   // begin, end, and ostream_iterator
-#include <cmath>      // pow
+#include <cmath>      // pow, abs
 
 // Define a function to generate one random number
 int create_random_integer(int min, int max) {
@@ -69,7 +69,7 @@ int main() {
     // Declare parameters
     int nx = 300;         // number of cells in x-direction
     int ny = 300;         // number of cells in y-direction
-    int nt = 1000;        // number of time steps
+    int nt = 2000;        // number of time steps
     int nw = 900;         // number of random walkers
 
     // Declare cluster reroll, the number of times to regenerate a random 

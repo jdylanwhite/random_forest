@@ -13,7 +13,7 @@ nt = df['n'].max()
 nw = df['i'].max()
 
 # Loop through data and plot data
-for n in range(nt):
+for n in range(0,nt,4):
 
     # Only get data for this time step
     dfPlot = df.loc[df['n']==n]
